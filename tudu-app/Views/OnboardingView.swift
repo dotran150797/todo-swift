@@ -20,7 +20,7 @@ struct OnboardingView: View {
     var body: some View {
         let isLastStep = self.currentStepIndex == onboardingSteps.count - 1
 
-        NavigationView {
+        NavigationStack {
             TabView(selection: $currentStepIndex) {
                 ForEach(onboardingSteps.indices, id: \.self) { index in
                     VStack {
@@ -36,12 +36,12 @@ struct OnboardingView: View {
                         
                         Text(onboardingSteps[index].title)
                             .padding(.top, 50)
-                            .latoBoldFont(size: 30)
+                            .latoBoldFont(size: FontSizes.h1)
                         
                         Text(onboardingSteps[index].description)
                             .multilineTextAlignment(.center)
                             .padding(.top, 30)
-                            .latoFont(size: 18)
+                            .latoFont(size: FontSizes.h3)
                         
                         Spacer()
                         

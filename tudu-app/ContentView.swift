@@ -10,14 +10,18 @@ import SwiftUI
 struct ContentView: View {
     @AppStorage("isOnboardingComplete") private var isOnboardingComplete = false
     
-    
     var body: some View {
-        if isOnboardingComplete {
-            Text("Onboarding Completed")
-        } else {
-            OnboardingView(isOnboardingComplete: $isOnboardingComplete)
-                .latoFont(size: 16)
+        Group {
+            if isOnboardingComplete {
+                WelcomeView()
+                    .transition(.move(edge: .trailing))
+            } else {
+                OnboardingView(isOnboardingComplete: $isOnboardingComplete)
+                    .transition(.move(edge: .leading))
+            }
         }
+        .latoFont(size: 16)
+        .animation(.easeInOut, value: isOnboardingComplete)
     }
 }
 

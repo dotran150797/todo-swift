@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		1C743DF12D6EFD010010DC44 /* Clerk in Frameworks */ = {isa = PBXBuildFile; productRef = 1C743DF02D6EFD010010DC44 /* Clerk */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		1C743D302D6D9E030010DC44 /* tudu-app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "tudu-app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -36,6 +40,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1C743DF12D6EFD010010DC44 /* Clerk in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +83,7 @@
 			);
 			name = "tudu-app";
 			packageProductDependencies = (
+				1C743DF02D6EFD010010DC44 /* Clerk */,
 			);
 			productName = "tudu-app";
 			productReference = 1C743D302D6D9E030010DC44 /* tudu-app.app */;
@@ -107,6 +113,9 @@
 			);
 			mainGroup = 1C743D272D6D9E030010DC44;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				1C743DEF2D6EFD010010DC44 /* XCRemoteSwiftPackageReference "clerk-ios" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 1C743D312D6D9E030010DC44 /* Products */;
 			projectDirPath = "";
@@ -347,6 +356,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		1C743DEF2D6EFD010010DC44 /* XCRemoteSwiftPackageReference "clerk-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/clerk/clerk-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.49.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		1C743DF02D6EFD010010DC44 /* Clerk */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1C743DEF2D6EFD010010DC44 /* XCRemoteSwiftPackageReference "clerk-ios" */;
+			productName = Clerk;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 1C743D282D6D9E030010DC44 /* Project object */;
 }

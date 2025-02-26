@@ -10,11 +10,23 @@ import SwiftUI
 struct TButton: View {
     let title: String
     let isPrimary: Bool
+    let isLoading: Bool
     let action: () -> Void?
     
     var body: some View {
-        Button(title) {
+        Button(action: {
             action()
+        }) {
+            HStack {
+                if isLoading {
+                    ProgressView()
+                        .progressViewStyle(CircularProgressViewStyle())
+                        .tint(isPrimary ? .white : Color(hex: "#8875FF"))
+                        .scaleEffect(0.8)
+                }
+                
+                Text(title)
+            }
         }
             .frame(maxWidth: .infinity)
             .padding()
@@ -26,6 +38,7 @@ struct TButton: View {
                 RoundedRectangle(cornerRadius: 15)
                     .stroke(isPrimary ? Color.clear : Color(hex: "#8875FF"), lineWidth: 2)
             )
+            .disabled(isLoading)
             .latoBoldFont(size: FontSizes.body)
     }
 }

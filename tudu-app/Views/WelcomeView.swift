@@ -30,15 +30,14 @@ struct WelcomeView: View {
                 Spacer()
                 
                 VStack {
-                    TButton(title: "Login", isPrimary: true) {
+                    TButton(title: "Login", isPrimary: true, isLoading: false) {
                         //
                     }
                     
                     NavigationLink(destination: RegisterView()) {
-                        TButton(title: "CREATE ACCOUNT", isPrimary: false, action: {
+                        TButton(title: "CREATE ACCOUNT", isPrimary: false, isLoading: false) {
                             navigationPath.append(.register)
-                        })
-                    }
+                        }                    }
                     .padding(.top, Spacing.medium)
                 }
                 .padding(.bottom, Spacing.extraLarge)

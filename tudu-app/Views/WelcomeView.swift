@@ -31,13 +31,14 @@ struct WelcomeView: View {
                 
                 VStack {
                     TButton(title: "Login", isPrimary: true, isLoading: false) {
-                        //
+                        navigationPath.append(.login)
                     }
                     
                     NavigationLink(destination: RegisterView()) {
                         TButton(title: "CREATE ACCOUNT", isPrimary: false, isLoading: false) {
                             navigationPath.append(.register)
-                        }                    }
+                        }
+                    }
                     .padding(.top, Spacing.medium)
                 }
                 .padding(.bottom, Spacing.extraLarge)
@@ -48,7 +49,8 @@ struct WelcomeView: View {
                     RegisterView()
                         .navigationTitle("Register")
                 case .login:
-                    Text("Login view")
+                    LoginView()
+                        .navigationTitle("Login")
                 }
             }
             

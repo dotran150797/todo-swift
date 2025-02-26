@@ -52,10 +52,8 @@ final class RegisterViewModel: ObservableObject {
             )
             error = nil
         } catch let registerError as RegisterError {
-            print("Error1:", registerError)
             self.error = registerError
         } catch {
-            print("Error:", error)
             self.error = RegisterError.signUpFailed(error)
         }
     }

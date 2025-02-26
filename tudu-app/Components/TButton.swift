@@ -10,7 +10,7 @@ import SwiftUI
 struct TButton: View {
     let title: String
     let isPrimary: Bool
-    let action: () -> Void
+    let action: () -> Void?
     
     var body: some View {
         Button(title) {
@@ -26,6 +26,6 @@ struct TButton: View {
                 RoundedRectangle(cornerRadius: 15)
                     .stroke(isPrimary ? Color.clear : Color(hex: "#8875FF"), lineWidth: 2)
             )
-            .latoBoldFont(size: FontSizes.h3)
+            .latoBoldFont(size: FontSizes.body)
     }
 }

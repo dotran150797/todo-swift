@@ -23,8 +23,13 @@ struct tudu_appApp: App {
             }
             .environment(clerk)
             .task {
-                clerk.configure(publishableKey: "pk_test_Z29sZGVuLWRydW0tOTAuY2xlcmsuYWNjb3VudHMuZGV2JA")
-                try? await clerk.load()
+                if let publishableKey = Bundle.main.object(forInfoDictionaryKey: "ClerkPublishableKey") as? String {
+                                    clerk.configure(publishableKey: publishableKey)
+                                    try? await clerk.load()
+                } else {
+                    fatalError("Error: Could not load ClerkPublishableKey from Info.plist")
+                }
+                
             }
         }
     }

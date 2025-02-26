@@ -11,5 +11,7 @@
 		<string>Lato-Regular.ttf</string>
 		<string>Lato-Bold.ttf</string>
 	</array>
+	<key>ClerkPublishableKey</key>
+	<string>pk_test_Z29sZGVuLWRydW0tOTAuY2xlcmsuYWNjb3VudHMuZGV2JA</string>
 </dict>
 </plist>

@@ -28,7 +28,7 @@ struct ContentView: View {
                 WelcomeView()
                     .transition(.move(edge: .trailing))
             } else {
-                Text("Home screen")
+                MainTabView()
             }
         } else {
             OnboardingView(isOnboardingComplete: $isOnboardingComplete)

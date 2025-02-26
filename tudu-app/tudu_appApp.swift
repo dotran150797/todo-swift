@@ -7,6 +7,9 @@
 
 import SwiftUI
 import Clerk
+import ConvexMobile
+
+let convex = ConvexClient(deploymentUrl: "https://patient-axolotl-741.convex.cloud")
 
 @main
 struct tudu_appApp: App {

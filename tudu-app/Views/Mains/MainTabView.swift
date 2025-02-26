@@ -71,6 +71,7 @@ struct MainTabView: View {
         }
         .sheet(isPresented: $showAddTodo) {
             AddTodoView()
+                .presentationDetents([.fraction(0.5)])
         }
     }
 }

@@ -12,17 +12,15 @@ enum FocusedField {
 }
 
 struct AddTodoView: View {
-    @State private var newTodoText: String = ""
-    @State private var description: String = ""
-    @State private var date = Date()
-    @State private var selectedCategory: TaskCategory = .personal
-    @State private var selectedPriority: TaskPriority = .low
+    @StateObject private var viewModel: AddTodoViewModel = AddTodoViewModel()
     @FocusState private var focusedField: FocusedField?
+    @Binding var isPresented: Bool
+    @State private var showingErrorAlert = false
 
     var body: some View {
         Form {
             Section(header: Text("Add a new task")) {
-                TextField("Add your task here", text: $newTodoText)
+                TextField("Add your task here", text: $viewModel.todoText)
                     .padding(10)
                     .overlay(
                         RoundedRectangle(cornerRadius: 5)
@@ -30,7 +28,7 @@ struct AddTodoView: View {
                     )
                     .focused($focusedField, equals: .newTodoText)
 
-                TextField("Add your task description here", text: $description)
+                TextField("Add your task description here", text: $viewModel.descriptionText)
                     .padding(10)
                     .overlay(
                         RoundedRectangle(cornerRadius: 5)
@@ -44,31 +42,36 @@ struct AddTodoView: View {
                     
                     DatePicker(
                             "",
-                            selection: $date,
+                            selection: $viewModel.createdAt,
                             displayedComponents: [.date,.hourAndMinute]
                         )
                     .datePickerStyle(.compact)
                 }
                 
                 List {
-                    Picker("Category", selection: $selectedCategory) {
+                    Picker("Category", selection: $viewModel.category) {
                         Text("Personal").tag(TaskCategory.personal)
                         Text("Work").tag(TaskCategory.work)
-                        Text("Shopping").tag(TaskCategory.shopping)
                         Text("Other").tag(TaskCategory.other)
                     }
                 }
                 
                 List {
-                    Picker("Priority", selection: $selectedPriority) {
+                    Picker("Priority", selection: $viewModel.priority) {
                         Text("Low").tag(TaskPriority.low)
                         Text("Medium").tag(TaskPriority.medium)
                         Text("High").tag(TaskPriority.high)
                     }
                 }
                 
-                TButton(title: "Add", isPrimary: true, isLoading: false, action: {
-                    //
+                TButton(title: "Add", isPrimary: true, isLoading: viewModel.isLoading, action: {
+                    Task {
+                        try await viewModel.addTodo()
+                        showingErrorAlert = viewModel.error != nil
+                        if !showingErrorAlert {
+                            isPresented.toggle()
+                        }
+                    }
                 })
             }
             
@@ -76,9 +79,18 @@ struct AddTodoView: View {
         .onAppear {
             focusedField = .newTodoText
         }
+        .alert(isPresented: $showingErrorAlert) {
+            Alert(
+                title: Text("Error"),
+                message: Text(viewModel.error?.localizedDescription ?? "An unknown error occurred"),
+                dismissButton: .default(Text("OK")) {
+                    viewModel.error = nil // Clear error after dismissal
+                }
+            )
+        }
     }
 }
 
 #Preview {
-    AddTodoView()
+    AddTodoView(isPresented: .constant(false))
 }

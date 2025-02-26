@@ -5,15 +5,14 @@
 //  Created by Do Tran on 26/2/25.
 //
 
-enum TaskCategory: String {
+enum TaskCategory: Int {
     case work
     case personal
-    case shopping
     case other
 }
 
-enum TaskPriority: String {
-    case high
-    case medium
+enum TaskPriority: Int {
     case low
+    case medium
+    case high
 }

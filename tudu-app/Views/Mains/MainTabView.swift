@@ -70,7 +70,7 @@ struct MainTabView: View {
             }
         }
         .sheet(isPresented: $showAddTodo) {
-            AddTodoView()
+            AddTodoView(isPresented: $showAddTodo)
                 .presentationDetents([.fraction(0.5)])
         }
     }

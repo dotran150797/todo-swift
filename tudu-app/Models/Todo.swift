@@ -28,6 +28,15 @@ struct Todo: Decodable, Identifiable {
             let value = try decoder.singleValueContainer().decode(Int.self)
             self = Priority(rawValue: value) ?? .none // Default to none if invalid
         }
+        
+        var displayName: String {
+            switch self {
+            case .none: return "None"
+            case .low: return "Low"
+            case .medium: return "Medium"
+            case .high: return "High"
+        }
+    }
     }
     
     // Nested enum for category (updated to handle integers)

@@ -50,17 +50,17 @@ struct AddTodoView: View {
                 
                 List {
                     Picker("Category", selection: $viewModel.category) {
-                        Text("Personal").tag(TaskCategory.personal)
-                        Text("Work").tag(TaskCategory.work)
-                        Text("Other").tag(TaskCategory.other)
+                        Text("Personal").tag(Todo.Category.personal)
+                        Text("Work").tag(Todo.Category.work)
+                        Text("Other").tag(Todo.Category.other)
                     }
                 }
                 
                 List {
                     Picker("Priority", selection: $viewModel.priority) {
-                        Text("Low").tag(TaskPriority.low)
-                        Text("Medium").tag(TaskPriority.medium)
-                        Text("High").tag(TaskPriority.high)
+                        Text("Low").tag(Todo.Priority.low)
+                        Text("Medium").tag(Todo.Priority.medium)
+                        Text("High").tag(Todo.Priority.high)
                     }
                 }
                 

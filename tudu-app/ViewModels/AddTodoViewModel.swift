@@ -11,8 +11,8 @@ final class AddTodoViewModel: ObservableObject {
     @Published var todoText: String = ""
     @Published var descriptionText: String = ""
     @Published var createdAt: Date = Date()
-    @Published var category: TaskCategory = .work
-    @Published var priority: TaskPriority = .low
+    @Published var category: Todo.Category = .work
+    @Published var priority: Todo.Priority = .low
     @Published var isLoading: Bool = false
     @Published var error: Error?
     
